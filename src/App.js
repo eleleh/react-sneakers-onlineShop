@@ -4,33 +4,32 @@ import Drawer from './components/Drawer';
 import React from 'react';
 
 function App() {
+
+  const [items, setItems] = React.useState([]);
+  const [cartItems, setCartItems] = React.useState([]);
   const [cartOpened, setCartOpened] = React.useState(false);
-  const arr = [
-    {
-      title: "Männerschuhe Nike Blazer Mid Suede",
-      price: "89,95",
-      imageURL: "/img/sneakers/1.jpg"
-    },
-    {
-      title: "Männerschuhe Nike Blazer Mid Suede",
-      price: "99,95",
-      imageURL: "/img/sneakers/2.jpg"
-    },
-    {
-      title: "Männerschuhe Nike Blazer Mid Suede",
-      price: "119,95",
-      imageURL: "/img/sneakers/3.jpg"
-    },
-    {
-      title: "Männerschuhe Nike Blazer Mid Suede",
-      price: "69,95",
-      imageURL: "/img/sneakers/4.jpg"
-    }
-  ]
+
+  React.useEffect(() => {
+
+    fetch('https://64c225eafa35860baea14113.mockapi.io/items')
+      .then((res) => {
+        return res.json();
+      })
+      .then((json) => {
+        setItems(json);
+      });
+  }, []);
+
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj]);
+  };
+
   return (
     <div className="wrapper">
       {cartOpened &&
         <Drawer
+          items={cartItems}
           onCloseCart={() => setCartOpened(false)}
         />}
       <Header
@@ -46,13 +45,13 @@ function App() {
           </div>
         </div>
         <div className="sneakers">
-          {arr.map((v) => (
+          {items.map((v) => (
             <Card
               title={v.title}
               price={v.price}
               imageURL={v.imageURL}
               onClickFavorite={() => console.log("cheburek")}
-              onClickPlus={() => console.log("check")} />
+              onClickPlus={(obj) => onAddToCart(obj)} />
           ))
           }
         </div>
@@ -62,3 +61,4 @@ function App() {
 }
 
 export default App;
+

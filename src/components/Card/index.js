@@ -1,11 +1,12 @@
 import styles from './Card.module.css';
 import React, { useEffect } from 'react';
 
-function Card(props) {
+function Card({ title, imageURL, price, onClickFavorite, onClickPlus}) {
 
     const [isAdded, setIsAdded] = React.useState(false);
 
     const handlePlusClick = () => {
+        onClickPlus({title, price, imageURL});
         setIsAdded(!isAdded);
     }
 
@@ -17,16 +18,16 @@ function Card(props) {
 
 
         <div className={styles.card}>
-            <div className={styles.favorite} onClick={props.onClickFavorite}>
+            <div className={styles.favorite} onClick={onClickFavorite}>
                 <img src="/img/unliked.svg" alt="Unliked" />
             </div>
 
-            <img width={133} height={112} src={props.imageURL} alt="Sneakers" />
-            <h5>{props.title}</h5>
+            <img width={133} height={112} src={imageURL} alt="Sneakers" />
+            <h5>{title}</h5>
             <div className={styles.cardInfo}>
                 <div className={styles.priceInfo}>
                     <span> Preis: </span>
-                    <b>{props.price} €</b>
+                    <b>{price} €</b>
                 </div>
 
                 <img

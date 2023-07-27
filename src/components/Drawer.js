@@ -1,25 +1,28 @@
-function Drawer(props) {
+function Drawer({ onCloseCart, items = [] }) {
     return (
-        <div  className="overlay">
+        <div className="overlay">
             <div className="drawer">
                 <h2 className="shoppingCart">
                     Warenkorb
-                    <img className="removeBtn" src="/img/btn-remove.svg" alt="close" onClick={props.onCloseCart}/>
+                    <img className="removeBtn" src="/img/btn-remove.svg" alt="close" onClick={onCloseCart} />
 
                 </h2>
                 <div className="items">
-                    <div className="cart-item">
-                        <div className="cart-item-img"
-                            style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }}>
+                    {items.map((v) => (
 
-                        </div>
+                        <div className="cart-item">
+                            <div className="cart-item-img"
+                                style={{ backgroundImage: `url(${v.imageURL})` }}>
 
-                        <div className="cart-item-text">
-                            <p>Männerschuhe Nike Blazer Mid Suede</p>
-                            <b>95,95 €</b>
+                            </div>
+
+                            <div className="cart-item-text">
+                                <p>{v.title}</p>
+                                <b>{v.price} €</b>
+                            </div>
+                            <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
                         </div>
-                        <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
-                    </div>
+                    ))}
                 </div>
                 <div>
                     <ul className="cartTotalBlock">
