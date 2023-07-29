@@ -4,10 +4,16 @@ import React, { useEffect } from 'react';
 function Card({ title, imageURL, price, onClickFavorite, onClickPlus}) {
 
     const [isAdded, setIsAdded] = React.useState(false);
+    const [isFavorite, setIsFavorite] = React.useState(false);
 
     const handlePlusClick = () => {
         onClickPlus({title, price, imageURL});
         setIsAdded(!isAdded);
+    }
+
+    const handleFavoriteClick =() =>{
+        onClickFavorite({title, price, imageURL})
+        setIsFavorite(!isFavorite);
     }
 
     React.useEffect(() => {
@@ -18,8 +24,8 @@ function Card({ title, imageURL, price, onClickFavorite, onClickPlus}) {
 
 
         <div className={styles.card}>
-            <div className={styles.favorite} onClick={onClickFavorite}>
-                <img src="/img/unliked.svg" alt="Unliked" />
+            <div className={styles.favorite} onClick={handleFavoriteClick}>
+                <img src={isFavorite? 'img/liked.svg' : 'img/unliked.svg'} alt="Unliked" />
             </div>
 
             <img width={133} height={112} src={imageURL} alt="Sneakers" />

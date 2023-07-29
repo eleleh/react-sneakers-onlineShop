@@ -1,4 +1,4 @@
-function Drawer({ onCloseCart, items = [] }) {
+function Drawer({ onCloseCart, onRemove, items = [] }) {
     return (
         <div className="overlay">
             <div className="drawer">
@@ -7,7 +7,8 @@ function Drawer({ onCloseCart, items = [] }) {
                     <img className="removeBtn" src="/img/btn-remove.svg" alt="close" onClick={onCloseCart} />
 
                 </h2>
-                <div className="items">
+
+                {items.length > 0 ? <div className="items">
                     {items.map((v) => (
 
                         <div className="cart-item">
@@ -20,10 +21,17 @@ function Drawer({ onCloseCart, items = [] }) {
                                 <p>{v.title}</p>
                                 <b>{v.price} €</b>
                             </div>
-                            <img className="removeBtn" src="/img/btn-remove.svg" alt="remove" />
+                            <img
+                                className="removeBtn"
+                                src="/img/btn-remove.svg"
+                                alt="remove"
+                                onClick={() => onRemove(v.id)} />
                         </div>
                     ))}
                 </div>
+                    : <p>leer</p>
+                }
+
                 <div>
                     <ul className="cartTotalBlock">
                         <li>

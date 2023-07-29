@@ -18,14 +18,14 @@ function Header(props){
                width={18} 
                height={18} 
                src="/img/cart.svg"
+               alt="cart"
                onClick={props.onClickCart}
               />
               <span>193,67 €</span>
             </li>
             <li className="icons">
-              <img width={18} height={18} src="/img/heart.svg" />
-              <img width={18} height={18} src="/img/user.svg
-              "/>
+              <img width={18} height={18} src="/img/heart.svg" alt="favorite" />
+              <img width={18} height={18} src="/img/user.svg" alt="user"/>
             </li>
           </ul>
         </div>
