@@ -1,10 +1,10 @@
-function Drawer({ onCloseCart, onRemove, items = [] }) {
+function Drawer({ onClose, onRemove, items = [] }) {
     return (
         <div className="overlay">
             <div className="drawer">
                 <h2 className="shoppingCart">
                     Warenkorb
-                    <img className="removeBtn" src="/img/btn-remove.svg" alt="close" onClick={onCloseCart} />
+                    <img className="removeBtn" src="/img/btn-remove.svg" alt="close" onClick={onClose} />
 
                 </h2>
 
