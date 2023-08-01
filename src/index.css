@@ -56,7 +56,8 @@ header {
       >span {
         margin-left: 20px;
       }
-      >img{
+
+      >img {
         cursor: pointer;
       }
     }
@@ -90,7 +91,7 @@ header {
 
   >img {
     align-content: center;
-    margin-left:5px;
+    margin-left: 5px;
   }
 
   >input {
@@ -98,7 +99,7 @@ header {
     font-size: 16px;
     padding: 13px;
   }
-  
+
 }
 
 .sneakers {
@@ -210,6 +211,12 @@ header {
       transform: translateX(10px);
     }
   }
+
+  &:disabled {
+    animation: button-loading 0.9s ease-in-out infinite;
+  }
+
+
 }
 
 .greenBtn {
@@ -233,4 +240,40 @@ header {
     background-color: #87ac59;
   }
 
+  &:disabled {
+    background-color: #bebebe;
+    cursor: default;
+  }
+
+}
+
+.cartEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex: 1;
+
+  >img {
+    margin-bottom: 20px;
+    width: 120px;
+  }
+
+  >p {
+    opacity: 6;
+  }
+}
+
+@keyframes button-loading {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }
