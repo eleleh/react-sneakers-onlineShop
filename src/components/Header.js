@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
+import React from 'react'
+import { useCart } from "../hooks/useCart";
 
 function Header(props) {
+
+  const { totalPrice } = useCart()
+  const isTotalPriceOver0 = totalPrice > 0
+
   return (
     <header>
 
@@ -25,13 +31,18 @@ function Header(props) {
               alt="cart"
               onClick={props.onClickCart}
             />
-            <span>193,67 €</span>
+            {isTotalPriceOver0 &&
+              <span>{totalPrice} €</span>}
           </li>
-          <li className="icons">
+          <li>
             <Link to="/favorites">
               <img width={18} height={18} src="/img/heart.svg" alt="favorite" />
             </Link>
-            <img width={18} height={18} src="/img/user.svg" alt="user" />
+          </li>
+          <li>
+            <Link to="/orders">
+              <img width={18} height={18} src="/img/user.svg" alt="user" />
+            </Link>
           </li>
         </ul>
       </div >

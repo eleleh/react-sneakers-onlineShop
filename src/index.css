@@ -38,16 +38,21 @@ header {
 .headerInfo {
   >h3 {
     text-transform: uppercase;
+    margin-left: 10px;
+    margin-bottom: 10px;
   }
 
   >p {
     opacity: 0.5;
+    margin-left: 10px;
+    margin-top: 10px;
   }
 }
 
 .headerRight {
   >ul {
     display: flex;
+    margin-top: 0px;
 
     >li {
       margin-right: 30px;
@@ -55,10 +60,12 @@ header {
 
       >span {
         margin-left: 20px;
+        font-size: 15px;
       }
 
       >img {
         cursor: pointer;
+
       }
     }
   }
@@ -84,20 +91,19 @@ header {
 }
 
 .search-block {
-  display: flex;
+  display:flex;
   border: 1px solid #f3f3f3;
   border-radius: 10px;
-  width: 100px;
+  width: 250px;
+  padding-right: -10px;
 
-  >img {
-    align-content: center;
-    margin-left: 5px;
-  }
 
   >input {
+    outline: none;
     border: 0;
     font-size: 16px;
     padding: 13px;
+    width: 205px;
   }
 
 }
@@ -105,19 +111,6 @@ header {
 .sneakers {
   display: flex;
   flex-wrap: wrap;
-}
-
-
-.drawer {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  width: 420px;
-  height: 100%;
-  right: 0;
-  background-color: white;
-  box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
-  padding: 30px;
 
 }
 
@@ -125,16 +118,7 @@ header {
   flex: 1;
   overflow: auto;
   margin-bottom: 40px;
-}
-
-.overlay {
-  position: absolute;
-  left: 0;
-  top: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1;
-  width: 100%;
-  height: 100%;
+  padding:20px;
 
 }
 
@@ -276,4 +260,8 @@ header {
   100% {
     opacity: 1;
   }
+}
+.source{
+  font-size: 11px;
+  font-style: italic;
 }

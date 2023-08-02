@@ -17,11 +17,11 @@ function Card({ id,
     const [isFavorite, setIsFavorite] = React.useState(favorited);
 
     const handlePlusClick = () => {
-        onClickPlus({ id, title, price, imageURL });
+        onClickPlus({ id, parentID: id, title, price, imageURL });
     }
 
     const handleFavoriteClick = () => {
-        onAddToFavorite({ id, title, price, imageURL })
+        onAddToFavorite({ id, parentID: id, title, price, imageURL })
         setIsFavorite(!isFavorite);
     }
 
@@ -45,7 +45,7 @@ function Card({ id,
                 :
                 (<>
                     <div className={styles.favorite} onClick={handleFavoriteClick}>
-                        <img src={isFavorite ? 'img/liked.svg' : 'img/unliked.svg'} alt="Unliked" />
+                        {onAddToFavorite && <img src={isFavorite ? 'img/liked.svg' : 'img/unliked.svg'} alt="Unliked" />}
                     </div>
 
                     <img width={133} height={112} src={imageURL} alt="Sneakers" />
@@ -56,11 +56,11 @@ function Card({ id,
                             <b>{price} €</b>
                         </div>
 
-                        <img
+                        {onClickPlus && <img
                             className={styles.plus}
                             onClick={handlePlusClick}
                             src={isItemAdded(id) ? 'img/btn-checked.svg' : 'img/btn-plus.svg'}
-                            alt="plusbutton" />
+                            alt="plusbutton" />}
 
                     </div>
                 </>)

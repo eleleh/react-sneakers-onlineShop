@@ -45,6 +45,7 @@ function Home({ items,
                 </div>
             </div>
             <div className="sneakers">{renderItems()}</div>
+            <p className='source'>Quelle: https://www.lashoe.de/de/schuhe/modelle/sneaker</p>
         </div>
     )
 }
